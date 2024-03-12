@@ -1,17 +1,14 @@
 package edu.ucalgary.oop;
 
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
-
 public class FamilyRelationTest {
 
-    private DisasterVictim personOne = new DisasterVictim("John Dalan", "2024-01-19");
-    private DisasterVictim personTwo = new DisasterVictim("Jane Dalan", "2024-02-20");
-    private String relationshipTo = "sibling";
-    private FamilyRelation testFamilyRelationObject = new FamilyRelation(personOne, relationshipTo, personTwo);
+    private DisasterVictim personOne;
+    private DisasterVictim personTwo;
+    private String relationshipTo;
+    private FamilyRelation testFamilyRelationObject;
     
 
     @Before
@@ -60,4 +57,5 @@ public class FamilyRelationTest {
                     testFamilyRelationObject.duplicationCheck(personOne, personThree));
     }
 }
+
 
