@@ -3,6 +3,7 @@ package edu.ucalgary.oop;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+
 public class InquirerTest{
     private String expectedFirstName = "Joseph";
     private String expectedLastName = "Bouillon";
