@@ -1,57 +1,56 @@
-package edu.ucalgary.oop;
+xpackage edu.ucalgary.oop;
 
 import org.junit.*;
 import static org.junit.Assert.*;
 
+public class InquirerTest {
+    private String testFirstName = "Alice";
+    private String testLastName = "Johnson";
+    private String testPhoneNumber = "+1-987-654-3210";
+    private String testMessage = "Seeking information her family.";
+    private Inquirer inquirer = new Inquirer(testFirstName, testLastName, testPhoneNumber, testMessage);
 
-public class InquirerTest{
-    private String expectedFirstName = "Joseph";
-    private String expectedLastName = "Bouillon";
-    private String expectedPhoneNumber = "+1-123-456-7890";
-    private String expectedMessage = "looking for my family members";
-    private Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-
+    // Test object creation
     @Test
     public void testObjectCreation() {
-        assertNotNull(inquirer);
+        assertNotNull("Failed to create Inquirer object", inquirer);
     }
 
+    // Test getting first name
     @Test
     public void testGetFirstName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        assertEquals(expectedFirstName, inquirer.getFirstName());
+        assertEquals("Failed to retrieve correct first name", testFirstName, inquirer.getFirstName());
     }
 
+    // Test getting last name
     @Test
     public void testGetLastName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        assertEquals(expectedLastName, inquirer.getLastName());
+        assertEquals("Failed to retrieve correct last name", testLastName, inquirer.getLastName());
     }
 
+    // Test setting first name
     @Test
     public void testSetFirstName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        inquirer.setFirstName("John");
-        assertEquals("John", inquirer.getFirstName());
+        inquirer.setFirstName("Bob");
+        assertEquals("Failed to set first name correctly", "Bob", inquirer.getFirstName());
     }
 
+    // Test setting last name
     @Test
     public void testSetLastName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
         inquirer.setLastName("Smith");
-        assertEquals("Smith", inquirer.getLastName());
+        assertEquals("Failed to set last name correctly", "Smith", inquirer.getLastName());
     }
 
+    // Test getting services phone number
     @Test
     public void testGetServicesPhoneNum() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        assertEquals(expectedPhoneNumber, inquirer.getServicesPhoneNum());
+        assertEquals("Failed to retrieve correct phone number", testPhoneNumber, inquirer.getServicesPhoneNum());
     }
 
+    // Test getting information message
     @Test
     public void testGetInfo() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        assertEquals(expectedMessage, inquirer.getInfo());
+        assertEquals("Failed to retrieve correct information message", testMessage, inquirer.getInfo());
     }
-
 }
