@@ -12,13 +12,13 @@ public class ReliefServiceTest {
     private String validDate = "2024-02-10";
     private String invalidDate = "2024/02/10";
     private String expectedInfoProvided = "Looking for family member";
-    private String expectedLogDetails = "Inquirer: John, Missing Person: Jane Alex, Date of Inquiry: 2024-02-10, Info Provided: Looking for family member, Last Known Location: University of Calgary"; 
+    private String expectedLogDetails = "Inquirer: Louis, Missing Person: Angelina Kane, Date of Inquiry: 2024-02-10, Info Provided: Looking for family member, Last Known Location: University of Calgary"; 
 
     @Before
     public void setUp() {
         // Assuming Inquirer, DisasterVictim, and Location have constructors as implied
-        inquirer = new Inquirer("John", "Alex", "1234567890", "Looking for family member");
-        missingPerson = new DisasterVictim("Jane Alex", "2024-01-25");
+        inquirer = new Inquirer("Louis", "Kane", "1234567890", "Looking for family member");
+        missingPerson = new DisasterVictim("Angelina Kane", "2024-02-18");
         lastKnownLocation = new Location("University of Calgary", "2500 University Dr NW");
         reliefService = new ReliefService(inquirer, missingPerson, validDate, expectedInfoProvided, lastKnownLocation);
     }

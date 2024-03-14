@@ -14,7 +14,7 @@ public class LocationTest {
     public void setUp() {
         // Initializing test objects before each test method
         location = new Location("Shelter A", "1234 Shelter Ave");
-        victim = new DisasterVictim("John Doe", "2024-01-01");
+        victim = new DisasterVictim("Louis Kane", "2024-01-20");
         supply = new Supply("Water Bottle", 10);
     }
 

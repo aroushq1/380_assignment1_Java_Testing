@@ -4,8 +4,8 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class InquirerTest {
-    private String testFirstName = "Alice";
-    private String testLastName = "Johnson";
+    private String testFirstName = "Angelina";
+    private String testLastName = "Kane";
     private String testServicePhoneNumber = "+1-987-654-3210";
     private String testMessage = "Seeking information her family.";
     private Inquirer inquirer = new Inquirer(testFirstName, testLastName, testPhoneNumber, testMessage);

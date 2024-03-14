@@ -1,94 +1,55 @@
 package edu.ucalgary.oop;
 
-
 import java.util.ArrayList;
-
 
 public class DisasterVictim extends Person {
     private String dateOfBirth;
     private int age;
     private String comments;
-    private int ASSIGNED_SOCIAL_ID;
+    private int assignedSocialID;
     private ArrayList<MedicalRecord> medicalRecords;
     private ArrayList<FamilyRelation> familyConnections;
-    private String ENTRY_DATE;
+    private String entryDate;
     private ArrayList<Supply> personalBelongings;
     private int counter;
     private String supply;
-
 
     public enum Diet {
         AVML, DBML, GFML, KSML, LSML, MOML, PFML, VGML, VJML
     }
 
-
-    public DisasterVictim(String firstName, String ENTRY_DATE, int age) {
+    public DisasterVictim(String firstName, String entryDate, int age) {
         super(firstName, "");
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative");
         }
         this.age = age;
-        this.ENTRY_DATE = ENTRY_DATE;
-        this.MedicalRecords = new ArrayList<>();
-        this.familyConnections = new ArrayList<>();
-        this.personalBelongings = new ArrayList<>();
-    }
-
-
-    public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) {
-        super(firstName, "");
-        this.dateOfBirth = dateOfBirth;
-        this.ENTRY_DATE = ENTRY_DATE;
+        this.entryDate = entryDate;
         this.medicalRecords = new ArrayList<>();
         this.familyConnections = new ArrayList<>();
         this.personalBelongings = new ArrayList<>();
     }
 
+    public DisasterVictim(String firstName, String entryDate, String dateOfBirth) {
+        super(firstName, "");
+        this.dateOfBirth = dateOfBirth;
+        this.entryDate = entryDate;
+        this.medicalRecords = new ArrayList<>();
+        this.familyConnections = new ArrayList<>();
+        this.personalBelongings = new ArrayList<>();
+    }
 
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-
-    public String getComments() {
-        return comments;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-
-    public MedicalRecord[] getMedicalRecords() {
-        return medicalRecords.toArray(new MedicalRecord[0]);
+    public int getAge() {
+        return age;
     }
-
-
-    public String getEntryDate() {
-        return ENTRY_DATE;
-    }
-
-
-    public int getAssignedSocialID() {
-        return ASSIGNED_SOCIAL_ID;
-    }
-
-
-    public ArrayList<Supply> getPersonalBelongings() {
-        return personalBelongings;
-    }
-
-
-    public ArrayList<FamilyRelation> getFamilyConnections() {
-        return familyConnections;
-    }
-
-
-    public String getSupply() {
-        return supply;
-    }
-
-
-    public String getAge() {
-        return Integer.toString(age);
-    }
-
 
     public void setAge(int age) {
         if (age < 0) {
@@ -97,73 +58,72 @@ public class DisasterVictim extends Person {
         this.age = age;
     }
 
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public String getComments() {
+        return comments;
     }
-
 
     public void setComments(String comments) {
         this.comments = comments;
     }
 
+    public int getAssignedSocialID() {
+        return assignedSocialID;
+    }
+
+    public void setAssignedSocialID(int assignedSocialID) {
+        this.assignedSocialID = assignedSocialID;
+    }
+
+    public ArrayList<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
+    }
 
     public void setMedicalRecords(ArrayList<MedicalRecord> medicalRecords) {
         this.medicalRecords = medicalRecords;
     }
 
-
-    public void setPersonalBelongings(ArrayList<Supply> personalBelongings) {
-        this.personalBelongings = personalBelongings;
+    public ArrayList<FamilyRelation> getFamilyConnections() {
+        return familyConnections;
     }
-
 
     public void setFamilyConnections(ArrayList<FamilyRelation> familyConnections) {
         this.familyConnections = familyConnections;
     }
 
+    public String getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public ArrayList<Supply> getPersonalBelongings() {
+        return personalBelongings;
+    }
+
+    public void setPersonalBelongings(ArrayList<Supply> personalBelongings) {
+        this.personalBelongings = personalBelongings;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public String getSupply() {
+        return supply;
+    }
 
     public void setSupply(String supply) {
         this.supply = supply;
     }
 
 
-    public void removePersonalBelonging(Supply supply) {
-        personalBelongings.remove(supply);
-    }
-
-
-    public void addPersonalBelonging(Supply supply) {
-        personalBelongings.add(supply);
-    }
-
-
-    public void addFamilyConnection(FamilyRelation familyConnection) {
-        familyConnections.add(familyConnection);
-    }
-
-
-    public void removeFamilyConnection(FamilyRelation familyConnection) {
-        familyConnections.remove(familyConnection);
-    }
-
-
-    public void addMedicalRecord(MedicalRecord medicalRecord) {
-        medicalRecords.add(medicalRecord);
-    }
-
-
-    public void decreaseSupplyQuantity(Supply supply) {
-        for (Supply originalSupply : personalBelongings) {
-            if (originalSupply.getType().equals(supply.getType())) {
-                int remainingQuantity = originalSupply.getQuantity() - supply.getQuantity();
-                originalSupply.setQuantity(Math.max(remainingQuantity, 0));
-                break;
-            }
-        }
-    }
-
-
+    
     public void dietRestriction(Diet victimDiet) {
         switch (victimDiet) {
             case AVML:
@@ -194,7 +154,6 @@ public class DisasterVictim extends Person {
                 System.out.println("Applying vegetarian Jain meal restriction");
                 break;
             default:
-                // Handle unexpected diet restriction
                 System.out.println("Unknown diet restriction");
                 break;
         }

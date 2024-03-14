@@ -14,8 +14,8 @@ public class FamilyRelationTest {
 
     @Before
     public void setup() {
-        personOne = new DisasterVictim("Louis Kane", "2025-01-20", 25);
-        personTwo = new DisasterVictim("Angelina Kane", "2025-02-18", 30);
+        personOne = new DisasterVictim("Louis Kane", "2024-01-20", 25);
+        personTwo = new DisasterVictim("Angelina Kane", "2024-02-18", 30);
         relationshipTo = "sibling";
         testFamilyRelationObject = new FamilyRelation(personOne, relationshipTo, personTwo);
     }
@@ -28,14 +28,14 @@ public class FamilyRelationTest {
 	
     @Test
     public void testSetAndGetPersonOne() {
-        DisasterVictim newPersonOne = new DisasterVictim("New Person", "2025-05-23", 30); //arrange
+        DisasterVictim newPersonOne = new DisasterVictim("New Person", "2024-05-23", 30); //arrange
         testFamilyRelationObject.setPersonOne(newPersonOne); //act
         assertEquals("expected to update personOne", newPersonOne, testFamilyRelationObject.getPersonOne());//assert
     }
 
     @Test
     public void testSetAndGetPersonTwo() {
-        DisasterVictim newPersonTwo = new DisasterVictim("Another Person", "2025-05-23", 28); //arrange
+        DisasterVictim newPersonTwo = new DisasterVictim("Another Person", "2024-05-23", 28); //arrange
         testFamilyRelationObject.setPersonTwo(newPersonTwo); //act
         assertEquals("expected to update personTwo", newPersonTwo, testFamilyRelationObject.getPersonTwo()); //assert
     }
@@ -49,7 +49,7 @@ public class FamilyRelationTest {
 
     @Test
     public void testDuplicationCheck() {
-        DisasterVictim personThree = new DisasterVictim("Angelina Kane", "2025-02-18", 23); // Same as personTwo , arrange
+        DisasterVictim personThree = new DisasterVictim("Angelina Kane", "202-02-18", 23); // Same as personTwo , arrange
         
         //act and assert:
         assertTrue("should return true if both persons are the same", 

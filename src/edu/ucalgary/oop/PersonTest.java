@@ -6,8 +6,8 @@ import static org.junit.Assert.*;
 
 public class PersonTest {
     private Person person;
-    private String expectedFirstName = "John";
-    private String expectedLastName = "Doe";
+    private String expectedFirstName = "Louis";
+    private String expectedLastName = "Kane";
 
     @Before
     public void setUp() {
@@ -16,15 +16,15 @@ public class PersonTest {
 
     @Test
     public void testSetAndGetFirstName() {
-        String newFirstName = "Michael";
+        String newFirstName = "John";
         person.setFirstName(newFirstName);
-        assertEquals("After setting a new first name, getFirstName should return the updated first name", newFirstName, person.getFirstName());
+        assertEquals("After setting the new first name successfully, getFirstName should return the updated first name", newFirstName, person.getFirstName());
     }
 
     @Test
     public void testSetAndGetLastName() {
-        String newLastName = "Smith";
+        String newLastName = "Cena";
         person.setLastName(newLastName);
-        assertEquals("After setting a new last name, getLastName should return the updated last name", newLastName, person.getLastName());
+        assertEquals("After setting the new last name successfully, getLastName should return the updated last name", newLastName, person.getLastName());
     }
 }
