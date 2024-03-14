@@ -271,7 +271,3 @@ public void testSetPersonalBelongings() {
 
     
 }
-
-
-
-

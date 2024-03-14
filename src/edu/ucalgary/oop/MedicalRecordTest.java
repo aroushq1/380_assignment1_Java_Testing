@@ -98,4 +98,3 @@ public class MedicalRecordTest {
         assertTrue(message, correctValue);
     }
 }
-
