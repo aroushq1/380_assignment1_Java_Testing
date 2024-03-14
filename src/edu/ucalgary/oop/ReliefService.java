@@ -1,22 +1,24 @@
 package edu.ucalgary.oop;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ReliefService {
-    private Location lastKnownLocation;
-    private String informationProvided;
-    private String inquiryDate;
-    private DisasterVictim missingPerson;
     private Inquirer inquirer;
+    private DisasterVictim missingPerson;
+    private String dateOfInquiry;
+    private String infoProvided;
+    private Location lastKnownLocation;
 
-    public ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String inquiryDate,
-            String informationProvided, Location lastKnownLocation) {
+    // Constructor
+    public ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String dateOfInquiry, String infoProvided, Location lastKnownLocation) {
         this.inquirer = inquirer;
         this.missingPerson = missingPerson;
-        this.inquiryDate = inquiryDate;
-        this.informationProvided = informationProvided;
+        setDateOfInquiry(dateOfInquiry);
+        this.infoProvided = infoProvided;
         this.lastKnownLocation = lastKnownLocation;
     }
 
-    // Getters and setters
+    // Getter and setter for inquirer
     public Inquirer getInquirer() {
         return inquirer;
     }
@@ -25,30 +27,38 @@ public class ReliefService {
         this.inquirer = inquirer;
     }
 
-    public DisasterVictim getMissingIndividual() {
+    // Getter and setter for missingPerson
+    public DisasterVictim getMissingPerson() {
         return missingPerson;
     }
 
-    public void setMissingIndividual(DisasterVictim missingPerson) {
+    public void setMissingPerson(DisasterVictim missingPerson) {
         this.missingPerson = missingPerson;
     }
 
-    public String getInquiryDate() {
-        return inquiryDate;
+    // Getter and setter for dateOfInquiry
+    public String getDateOfInquiry() {
+        return dateOfInquiry;
     }
 
-    public void setInquiryDate(String inquiryDate) {
-        this.inquiryDate = inquiryDate;
+    public void setDateOfInquiry(String dateOfInquiry) {
+        // Check if the dateOfInquiry string matches the expected date format
+        if (!isValidDateFormat(dateOfInquiry)) {
+            throw new IllegalArgumentException("Invalid date format for date of inquiry. Expected format: YYYY-MM-DD");
+        }
+        this.dateOfInquiry = dateOfInquiry;
     }
 
-    public String getInformationProvided() {
-        return informationProvided;
+    // Getter and setter for infoProvided
+    public String getInfoProvided() {
+        return infoProvided;
     }
 
-    public void setInformationProvided(String informationProvided) {
-        this.informationProvided = informationProvided;
+    public void setInfoProvided(String infoProvided) {
+        this.infoProvided = infoProvided;
     }
 
+    // Getter and setter for lastKnownLocation
     public Location getLastKnownLocation() {
         return lastKnownLocation;
     }
@@ -57,9 +67,20 @@ public class ReliefService {
         this.lastKnownLocation = lastKnownLocation;
     }
 
-    // Method to get information log details
-    public String getInformationLogDetails() {
-        // You need to define how the information log is retrieved or formatted
-        return "Information log details"; // Placeholder
+    // Helper method to check if a string matches the YYYY-MM-DD date format
+    private boolean isValidDateFormat(String date) {
+        try {
+            LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public String getLogDetails() {
+       return "Inquirer: " + inquirer.getFirstName() + 
+           ", Missing Person: " + missingPerson.getFirstName() + 
+           ", Date of Inquiry: " + dateOfInquiry + 
+           ", Info Provided: " + infoProvided + 
+           ", Last Known Location: " + lastKnownLocation.getName();
     }
 }
