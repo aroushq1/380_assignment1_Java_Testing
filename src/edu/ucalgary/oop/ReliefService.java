@@ -5,16 +5,16 @@ import java.time.format.DateTimeFormatter;
 public class ReliefService {
     private Inquirer inquirer;
     private DisasterVictim missingPerson;
-    private String dateOfInquiry;
-    private String infoProvided;
+    private String inquiryDate;
+    private String informationProvided;
     private Location lastKnownLocation;
 
     // Constructor
     public ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String dateOfInquiry, String infoProvided, Location lastKnownLocation) {
         this.inquirer = inquirer;
         this.missingPerson = missingPerson;
-        setDateOfInquiry(dateOfInquiry);
-        this.infoProvided = infoProvided;
+        setInquiryDate(inquiryDate);
+        this.informationProvided = informationProvided;
         this.lastKnownLocation = lastKnownLocation;
     }
 
@@ -37,25 +37,25 @@ public class ReliefService {
     }
 
     // Getter and setter for dateOfInquiry
-    public String getDateOfInquiry() {
-        return dateOfInquiry;
+    public String getInquiryDate() {
+        return inquiryDate;
     }
 
-    public void setDateOfInquiry(String dateOfInquiry) {
+    public void setInquiryDate(String inquiryDate) {
         // Check if the dateOfInquiry string matches the expected date format
-        if (!isValidDateFormat(dateOfInquiry)) {
+        if (!isValidDateFormat(inquiryDate)) {
             throw new IllegalArgumentException("Invalid date format for date of inquiry. Expected format: YYYY-MM-DD");
         }
-        this.dateOfInquiry = dateOfInquiry;
+        this.inquiryDate = inquiryDate;
     }
 
     // Getter and setter for infoProvided
-    public String getInfoProvided() {
-        return infoProvided;
+    public String getInformationProvided() {
+        return informationProvided;
     }
 
-    public void setInfoProvided(String infoProvided) {
-        this.infoProvided = infoProvided;
+    public void setInformatiomProvided(String informationProvided) {
+        this.informationProvided = informationProvided;
     }
 
     // Getter and setter for lastKnownLocation
@@ -79,8 +79,8 @@ public class ReliefService {
     public String getLogDetails() {
        return "Inquirer: " + inquirer.getFirstName() + 
            ", Missing Person: " + missingPerson.getFirstName() + 
-           ", Date of Inquiry: " + dateOfInquiry + 
-           ", Info Provided: " + infoProvided + 
+           ", Date of Inquiry: " + inquiryDate + 
+           ", Info Provided: " + informationProvided + 
            ", Last Known Location: " + lastKnownLocation.getName();
     }
 }

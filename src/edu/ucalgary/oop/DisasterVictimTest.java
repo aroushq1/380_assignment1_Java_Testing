@@ -1,10 +1,18 @@
+package edu.ucalgary.oop;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import java.util.ArrayList;
+
 public class DisasterVictimTest {
     // Instance of DisasterVictim for testing
     private DisasterVictim victim;
 
     @Before
     public void setUp() {
-        // Initialize a DisasterVictim instance with name "David", entry date "2024-02-17", and age 32
+        // Initialize a DisasterVictim instance with name "David", entry date
+        // "2024-02-17", and age 32
         victim = new DisasterVictim("Louis", "2024-01-20", 25);
     }
 
@@ -57,8 +65,8 @@ public class DisasterVictimTest {
 
     @Test
     public void testSetAndGetFamilyConnections() {
-        DisasterVictim personOne = new DisasterVictim("Louis", "2024-01-20", 30);
-        DisasterVictim personTwo = new DisasterVictim("Angelina", "2024-02-18", 25);
+        DisasterVictim personOne = new DisasterVictim("Louis", "2024-01-20", 25);
+        DisasterVictim personTwo = new DisasterVictim("Angelina", "2024-02-18", 30);
         FamilyRelation relation = new FamilyRelation(personOne, "Sibling", personTwo);
         ArrayList<FamilyRelation> familyConnections = new ArrayList<>();
         familyConnections.add(relation);
@@ -90,19 +98,20 @@ public class DisasterVictimTest {
 
     @Test
     public void testAddFamilyConnection() {
-        DisasterVictim person = new DisasterVictim("Alice", "2024-03-12", 25);
+        DisasterVictim person = new DisasterVictim("Angelina", "2024-02-18", 30);
         FamilyRelation relation = new FamilyRelation(person, "Sibling", victim);
         victim.addFamilyConnection(relation);
 
         assertEquals(1, victim.getFamilyConnections().size());
         assertEquals("Sibling", victim.getFamilyConnections().get(0).getRelationshipTo());
-        assertEquals("Alice", victim.getFamilyConnections().get(0).getPersonOne().getFirstName());
-        assertEquals("John", victim.getFamilyConnections().get(0).getPersonTwo().getFirstName());
+        assertEquals("Angelina", victim.getFamilyConnections().get(0).getPersonOne().getFirstName());
+        assertEquals("Louis", victim.getFamilyConnections().get(0).getPersonTwo().getFirstName());
     }
 
     @Test
     public void testRemoveFamilyConnection() {
-        FamilyRelation relation = new FamilyRelation(victim, "Sibling", new DisasterVictim("Alice", "2024-03-12", 25));
+        FamilyRelation relation = new FamilyRelation(victim, "Sibling",
+                new DisasterVictim("Angelina", "2024-02-18", 30));
         victim.addFamilyConnection(relation);
         victim.removeFamilyConnection(relation);
         assertEquals(0, victim.getFamilyConnections().size());
@@ -110,12 +119,12 @@ public class DisasterVictimTest {
 
     @Test
     public void testAddMedicalRecord() {
-        Location location = new Location("John", "Canada");
+        Location location = new Location("Louis", "Canada");
         MedicalRecord record = new MedicalRecord(location, "Broken leg", "2024-03-12");
         victim.addMedicalRecord(record);
         assertEquals(1, victim.getMedicalRecords().length);
         assertEquals("Broken leg", victim.getMedicalRecords()[0].getTreatmentDetails());
-        assertEquals("2024-03-12", victim.getMedicalRecords()[0].getDateOfTreatment());
+        assertEquals("2024-01-20", victim.getMedicalRecords()[0].getDateOfTreatment());
     }
 
     @Test

@@ -2,12 +2,12 @@ package edu.ucalgary.oop;
 
 public class Inquirer extends Person{
     private String info;
-    private String servicesPhoneNum;
+    private String servicePhoneNumber;
 
     // Constructor
     public Inquirer(String firstName, String lastName, String servicesPhoneNum, String info) {
         super(firstName, lastName);
-        this.servicesPhoneNum = servicesPhoneNum;
+        this.servicePhoneNumber = servicePhoneNumber;
         this.info = info;
     }
 
@@ -15,8 +15,8 @@ public class Inquirer extends Person{
         return info;
     }
 
-    public String getServicesPhoneNum() {
-        return servicesPhoneNum;
+    public String getServicePhoneNumbeString() {
+        return servicePhoneNumber;
     }
 
 }

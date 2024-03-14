@@ -175,5 +175,3 @@ public class DisasterVictim extends Person {
 
 
 
-
-

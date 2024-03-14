@@ -4,6 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import edu.ucalgary.oop.ReliefService;
+import edu.ucalgary.oop.Inquirer;
+import edu.ucalgary.oop.DisasterVictim;
+import edu.ucalgary.oop.Location;
+
 public class ReliefServiceTest {
     private ReliefService reliefService;
     private Inquirer inquirer;
