@@ -90,8 +90,7 @@ public class DisasterVictimTest {
 
     @Test
     public void testGetAssignedSocialID() {
-        // The next victim should have an ID one higher than the previous victim
-        // Tests can be run in any order so two victims will be created
+
         DisasterVictim newVictim = new DisasterVictim("Kash", "2024-01-21");
         int expectedSocialId = newVictim.getAssignedSocialID() + 1;
         DisasterVictim actualVictim = new DisasterVictim("Adeleke", "2024-01-22");

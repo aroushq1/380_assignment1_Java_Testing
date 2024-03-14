@@ -73,7 +73,7 @@ public class LocationTest {
 
     @Test
     public void testRemoveSupply() {
-        location.addSupply(supply); // Ensure the supply is added first
+        location.addSupply(supply); 
         location.removeSupply(supply);
         assertFalse("removeSupply should remove the supply from the supplies list", containsSupply(location.getSupplies(), supply));
     }
