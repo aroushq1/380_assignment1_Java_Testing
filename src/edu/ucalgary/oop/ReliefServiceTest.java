@@ -34,18 +34,18 @@ public class ReliefServiceTest {
     }
 
     @Test
-    public void testGetMissingPerson() {
-        assertEquals("Missing person should match the one set in setup", missingPerson, reliefService.getMissingPerson());
+    public void testGetMissingIndividual() {
+        assertEquals("Missing person should match the one set in setup", missingPerson, reliefService.getMissingIndividual());
     }
 
     @Test
-    public void testGetDateOfInquiry() {
-        assertEquals("Date of inquiry should match the one set in setup", validDate, reliefService.getDateOfInquiry());
+    public void testGetInquiryDate() {
+        assertEquals("Date of inquiry should match the one set in setup", validDate, reliefService.getInquiryDate());
     }
 
     @Test
-    public void testGetInfoProvided() {
-        assertEquals("Info provided should match the one set in setup", expectedInfoProvided, reliefService.getInfoProvided());
+    public void testGetInformationProvided() {
+        assertEquals("Information provided should match the one set in setup", expectedInfoProvided, reliefService.getInformationProvided());
     }
 
     @Test
@@ -54,18 +54,18 @@ public class ReliefServiceTest {
     }
 
     @Test
-    public void testSetDateOfInquiryWithValidDate() {
-        reliefService.setDateOfInquiry(validDate);
-        assertEquals("Setting a valid date should update the date of inquiry", validDate, reliefService.getDateOfInquiry());
+    public void testSetInquiryDateWithValidDate() {
+        reliefService.setInquiryDate(validDate);
+        assertEquals("Setting a valid date should update the date of inquiry", validDate, reliefService.getInquiryDate());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetDateOfInquiryWithInvalidDate() {
-        reliefService.setDateOfInquiry(invalidDate); // This should throw IllegalArgumentException due to invalid format
+        reliefService.setInquiryDate(invalidDate); // This should throw IllegalArgumentException due to invalid format
     }
 
     @Test
-    public void testGetLogDetails() {
-        assertEquals("Log details should match the expected format", expectedLogDetails, reliefService.getLogDetails());
+    public void testGetInformationLogDetails() {
+        assertEquals("Log details should match the expected format", expectedLogDetails, reliefService.getInformationLogDetails());
     }
 }
