@@ -5,62 +5,69 @@ import static org.junit.Assert.*;
 
 public class MedicalRecordTest {
 
-    Location expectedLocation = new Location("ShelterA", "140 8 Ave NW ");
-    private String expectedTreatmentDetails = "Broken arm treated";
-    private String expectedDateOfTreatment = "2024-01-19";
-    private String validDateOfTreatment = "2024-02-04";
-    private String inValidDateOfTreatment = "2024/02/04";
+    // Create a test MedicalRecord object
+    Location expectedLocation = new Location("University of Calgary", "142 3 Ave NW ");
+    private String expectedTreatmentDetails = "Fractured wrist treated";
+    private String expectedDateOfTreatment = "2024-01-26";
+    private String validDateOfTreatment = "2024-03-15";
+    private String inValidDateOfTreatment = "2024/03/14";
     MedicalRecord medicalRecord = new MedicalRecord(expectedLocation, expectedTreatmentDetails, expectedDateOfTreatment);
 
-
+    // Test for object creation
     @Test
     public void testObjectCreation() {
-        assertNotNull(medicalRecord);
-    }	
-	
-    @Test
-    public void testGetLocation() {
-    assertEquals("getLocation should return the correct Location", expectedLocation, medicalRecord.getLocation());
+        assertNotNull("Constructor should create a non-null MedicalRecord object", medicalRecord);
     }
 
+    // Test for getLocation method
+    @Test
+    public void testGetLocation() {
+        assertEquals("getLocation should return the correct Location", expectedLocation, medicalRecord.getLocation());
+    }
+
+    // Test for setLocation method
     @Test
     public void testSetLocation() {
-	Location newExpectedLocation = new Location("Shelter B", "150 8 Ave NW ");
-	medicalRecord.setLocation(newExpectedLocation);
+        Location newExpectedLocation = new Location("Mount Royal", "198 17 Ave SW ");
+        medicalRecord.setLocation(newExpectedLocation);
         assertEquals("setLocation should update the Location", newExpectedLocation.getName(), medicalRecord.getLocation().getName());
     }
 
+    // Test for getTreatmentDetails method
     @Test
     public void testGetTreatmentDetails() {
         assertEquals("getTreatmentDetails should return the correct treatment details", expectedTreatmentDetails, medicalRecord.getTreatmentDetails());
     }
     
+    // Test for setTreatmentDetails method
     @Test
     public void testSetTreatmentDetails() {
-	String newExpectedTreatment = "No surgery required";
-	medicalRecord.setTreatmentDetails(newExpectedTreatment);
-    assertEquals("setTreatmentDetails should update the treatment details", newExpectedTreatment, medicalRecord.getTreatmentDetails());
+        String newExpectedTreatment = "Surgical treatment not required";
+        medicalRecord.setTreatmentDetails(newExpectedTreatment);
+        assertEquals("setTreatmentDetails should update the treatment details", newExpectedTreatment, medicalRecord.getTreatmentDetails());
     }
 
-
+    // Test for getDateOfTreatment method
     @Test
     public void testGetDateOfTreatment() {
-    assertEquals("getDateOfTreatment should return the correct date of treatment", expectedDateOfTreatment, medicalRecord.getDateOfTreatment());
+        assertEquals("getDateOfTreatment should return the correct date of treatment", expectedDateOfTreatment, medicalRecord.getDateOfTreatment());
     }
 	
+	// Test for setDateOfTreatment method
 	@Test
     public void testSetDateOfTreatment() {
-	String newExpectedDateOfTreatment = "2024-02-05";
-	medicalRecord.setDateOfTreatment(newExpectedDateOfTreatment);
-    assertEquals("setDateOfTreatment should update date of treatment", newExpectedDateOfTreatment, medicalRecord.getDateOfTreatment());
+		String newExpectedDateOfTreatment = "2024-03-06";
+		medicalRecord.setDateOfTreatment(newExpectedDateOfTreatment);
+        assertEquals("setDateOfTreatment should update date of treatment", newExpectedDateOfTreatment, medicalRecord.getDateOfTreatment());
     }
 	
+    // Test for setDateOfTreatment method with valid date format
     @Test
     public void testSetDateOfTreatmentWithValidFormat() {
-        
         medicalRecord.setDateOfTreatment(validDateOfTreatment); // Should not throw an exception
     }
 
+    // Test for setDateOfTreatment method with invalid date format
     @Test
     public void testSetDateOfBirthWithInvalidFormat() {
         boolean correctValue = false;
@@ -80,6 +87,7 @@ public class MedicalRecordTest {
         assertTrue(message, correctValue);
     }
 
+    // Test for setDateOfTreatment method with non-date input
     @Test
     public void testSetDateOfBirthWithNotADate() {
         boolean correctValue = false;

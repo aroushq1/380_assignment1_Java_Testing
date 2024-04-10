@@ -25,9 +25,9 @@ public class DisasterVictimTest {
     // Testing constructor with date of birth parameter
     @Test
     public void testConstructorWithDateOfBirth() {
-        DisasterVictim victimWithDOB = new DisasterVictim("Katy", "2024-03-12", "1996-02-01");
+        DisasterVictim victimWithDOB = new DisasterVictim("Katy", "2024-07-25", "1996-02-01");
         assertEquals("Katy", victimWithDOB.getFirstName());
-        assertEquals("2024-03-12", victimWithDOB.getEntryDate());
+        assertEquals("2024-07-25", victimWithDOB.getEntryDate());
         assertEquals("1996-02-01", victimWithDOB.getDateOfBirth());
     }
 

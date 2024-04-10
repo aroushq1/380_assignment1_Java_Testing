@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Location {
     private String name;
     private String address;
-    private ArrayList<DisasterVictim> occupants = new ArrayList<>(); // Initialized
-    private ArrayList<Supply> supplies = new ArrayList<>(); // Initialized
+    private ArrayList<DisasterVictim> occupants = new ArrayList<>();
+    private ArrayList<Supply> supplies = new ArrayList<>();
 
     // Constructor
     public Location(String name, String address) {
@@ -34,22 +34,24 @@ public class Location {
 
     // Getter for occupants
     public ArrayList<DisasterVictim> getOccupants() {
-        return new ArrayList<>(occupants); // Return a copy to maintain encapsulation
+        return new ArrayList<>(occupants);
     }
 
     // Setter for occupants
     public void setOccupants(ArrayList<DisasterVictim> occupants) {
-        this.occupants = new ArrayList<>(occupants); // Clear and addAll in one step, maintains encapsulation
+        this.occupants.clear();
+        this.occupants.addAll(occupants);
     }
 
     // Getter for supplies
     public ArrayList<Supply> getSupplies() {
-        return new ArrayList<>(supplies); // Return a copy to maintain encapsulation
+        return new ArrayList<>(supplies);
     }
 
     // Setter for supplies
     public void setSupplies(ArrayList<Supply> supplies) {
-        this.supplies = new ArrayList<>(supplies); // Clear and addAll in one step, maintains encapsulation
+        this.supplies.clear();
+        this.supplies.addAll(supplies);
     }
 
     // Add an occupant to occupants

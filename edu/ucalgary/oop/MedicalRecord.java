@@ -8,11 +8,13 @@ public class MedicalRecord {
     private String treatmentDetails;
     private String dateOfTreatment;
 
+    // Constructor
     public MedicalRecord(Location location, String treatmentDetails, String dateOfTreatment) throws IllegalArgumentException {
+        // Set the location using the setter method to ensure validation
         setLocation(location);
         this.treatmentDetails = treatmentDetails;
 
-        // Check if the treatmentDetails string matches the expected date format
+        // Validate the date format for dateOfTreatment
         if (!isValidDateFormat(dateOfTreatment)) {
             throw new IllegalArgumentException("Invalid date format for treatment details. Expected format: YYYY-MM-DD");
         }
@@ -28,12 +30,11 @@ public class MedicalRecord {
         this.location = location;
     }
 
-    // Getter for treatmentDetails
+    // Getter and setter for treatmentDetails
     public String getTreatmentDetails() {
         return treatmentDetails;
     }
 
-    // Setter for treatmentDetails
     public void setTreatmentDetails(String treatmentDetails) throws IllegalArgumentException {
         this.treatmentDetails = treatmentDetails;
     }
@@ -44,7 +45,7 @@ public class MedicalRecord {
     }
 
     public void setDateOfTreatment(String dateOfTreatment) throws IllegalArgumentException {
-        // Check if the date of treatment string matches the expected date format
+        // Validate the date format for dateOfTreatment
         if (!isValidDateFormat(dateOfTreatment)) {
             throw new IllegalArgumentException("Invalid date format. Expected format: YYYY-MM-DD");
         }

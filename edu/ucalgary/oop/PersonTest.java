@@ -1,44 +1,58 @@
 package edu.ucalgary.oop;
 
-import org.junit.*;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PersonTest {
-    private String expectedFirstName = "Joseph";
-    private String expectedLastName = "Bouillon";
+    // Sample data for testing
+    private String expectedFirstName = "Maus";
+    private String expectedLastName = "Fischer";
+    
+    // Create a Person object for testing with the sample data
     private Person person = new Person(expectedFirstName, expectedLastName);
 
     // Test Constructor 
     @Test
     public void testObjectCreation() {
+        // Ensure that the Person object is not null after creation
         assertNotNull(person);
     }
 
     // Test Getters 
     @Test
     public void testGetFirstName() {
-        Person person = new Person(expectedFirstName, expectedLastName);
-        assertEquals(expectedFirstName, person.getFirstName());
+        // Create a new Person object for testing
+        Person testPerson = new Person(expectedFirstName, expectedLastName);
+        // Assert that the retrieved first name matches the expected first name
+        assertEquals(expectedFirstName, testPerson.getFirstName());
     }
 
     @Test
     public void testGetLastName() {
-        Person person = new Person(expectedFirstName, expectedLastName);
-        assertEquals(expectedLastName, person.getLastName());
+        // Create a new Person object for testing
+        Person testPerson = new Person(expectedFirstName, expectedLastName);
+        // Assert that the retrieved last name matches the expected last name
+        assertEquals(expectedLastName, testPerson.getLastName());
     }
 
     // Test setters 
     @Test
     public void testSetFirstName() {
-        Person person = new Person(expectedFirstName, expectedLastName);
-        person.setFirstName("John");
-        assertEquals("John", person.getFirstName());
+        // Create a new Person object for testing
+        Person testPerson = new Person(expectedFirstName, expectedLastName);
+        // Set a new first name
+        testPerson.setFirstName("Adam");
+        // Assert that the first name has been successfully updated
+        assertEquals("Adam", testPerson.getFirstName());
     }
 
     @Test
     public void testSetLastName() {
-        Person person = new Person(expectedFirstName, expectedLastName);
-        person.setLastName("Smith");
-        assertEquals("Smith", person.getLastName());
+        // Create a new Person object for testing
+        Person testPerson = new Person(expectedFirstName, expectedLastName);
+        // Set a new last name
+        testPerson.setLastName("Klein");
+        // Assert that the last name has been successfully updated
+        assertEquals("Klein", testPerson.getLastName());
     }
 }

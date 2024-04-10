@@ -1,22 +1,26 @@
 package edu.ucalgary.oop;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class ReliefService {
-    private Inquirer inquirer;
-    private DisasterVictim missingPerson;
-    private String dateOfInquiry;
-    private String infoProvided;
+    // Fields
     private Location lastKnownLocation;
+    private Inquirer inquirer;
+    private DisasterVictim missingIndividual;
+    private String inquiryDate;
+    private String informationProvided;
 
-    public ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String dateOfInquiry, String infoProvided, Location lastKnownLocation) {
+    // Constructor
+    public ReliefService(Inquirer inquirer, DisasterVictim missingIndividual, String inquiryDate, String informationProvided, Location lastKnownLocation) {
         this.inquirer = inquirer;
-        this.missingPerson = missingPerson;
-        setDateOfInquiry(dateOfInquiry);
-        this.infoProvided = infoProvided;
+        this.missingIndividual = missingIndividual;
+        setInquiryDate(inquiryDate);
+        this.informationProvided = informationProvided;
         this.lastKnownLocation = lastKnownLocation;
     } 
 
+    // Getters and Setters for Inquirer
     public Inquirer getInquirer() {
         return inquirer;
     }
@@ -25,33 +29,38 @@ public class ReliefService {
         this.inquirer = inquirer;
     }
 
-    public DisasterVictim getMissingPerson() {
-        return missingPerson;
+    // Getters and Setters for Missing Individual
+    public DisasterVictim getMissingIndividual() {
+        return missingIndividual;
     }
 
-    public void setMissingPerson(DisasterVictim missingPerson) {
-        this.missingPerson = missingPerson;
+    public void setMissingIndividual(DisasterVictim missingIndividual) {
+        this.missingIndividual = missingIndividual;
     }
 
-    public String getDateOfInquiry() {
-        return dateOfInquiry;
+    // Getter and Setter for Inquiry Date
+    public String getInquiryDate() {
+        return inquiryDate;
     }
 
-    public void setDateOfInquiry(String dateOfInquiry) {
-        if (!isValidDateFormat(dateOfInquiry)) {
-            throw new IllegalArgumentException("Invalid date format for date of inquiry. Expected format: YYYY-MM-DD");
+    public void setInquiryDate(String inquiryDate) {
+        // Validate date format
+        if (!isValidDateFormat(inquiryDate)) {
+            throw new IllegalArgumentException("Invalid date format for inquiry date. Expected format: YYYY-MM-DD");
         }
-        this.dateOfInquiry = dateOfInquiry;
+        this.inquiryDate = inquiryDate;
     }
 
-    public String getInfoProvided() {
-        return infoProvided;
+    // Getter and Setter for Information Provided
+    public String getInformationProvided() {
+        return informationProvided;
     }
 
-    public void setInfoProvided(String infoProvided) {
-        this.infoProvided = infoProvided;
+    public void setInformationProvided(String informationProvided) {
+        this.informationProvided = informationProvided;
     }
 
+    // Getter and Setter for Last Known Location
     public Location getLastKnownLocation() {
         return lastKnownLocation;
     }
@@ -60,6 +69,7 @@ public class ReliefService {
         this.lastKnownLocation = lastKnownLocation;
     }
 
+    // Method to check if the date has a valid format
     private boolean isValidDateFormat(String date) {
         try {
             LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
@@ -68,11 +78,13 @@ public class ReliefService {
             return false;
         }
     }
+
+    // Method to get log details
     public String getLogDetails() {
-       return "Inquirer: " + inquirer.getFirstName() + 
-           ", Missing Person: " + missingPerson.getFirstName() + 
-           ", Date of Inquiry: " + dateOfInquiry + 
-           ", Info Provided: " + infoProvided + 
+        return "Inquirer: " + inquirer.getFirstName() + 
+           ", Missing Person: " + missingIndividual.getFirstName() + 
+           ", Date of Inquiry: " + inquiryDate + 
+           ", Info Provided: " + informationProvided + 
            ", Last Known Location: " + lastKnownLocation.getName();
     }
 }
