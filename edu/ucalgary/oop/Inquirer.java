@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
-import java.sql.Connection;
 
 public class Inquirer extends Person implements InquirerQuerySearchInterface {
     private static final Scanner scanner = new Scanner(System.in);
@@ -29,6 +28,7 @@ public class Inquirer extends Person implements InquirerQuerySearchInterface {
         return servicesPhoneNum;
     }
 
+    // Database class for establishing connection
     public class Database {
         private static final String URL = "jdbc:postgresql://localhost:5432/ensf380project";
         private static final String USERNAME = "oop";
@@ -39,6 +39,7 @@ public class Inquirer extends Person implements InquirerQuerySearchInterface {
         }
     }
 
+    // Main method to start the inquiry management system
     public void start() {
         System.out.println("Welcome to the Inquiry Management System");
 
@@ -97,6 +98,7 @@ public class Inquirer extends Person implements InquirerQuerySearchInterface {
         }
     }
 
+    // Implementation of logNewInquiry method
     @Override
     public boolean logNewInquiry(Connection connection, String firstName, String lastName, String phoneNumber, String details) throws SQLException {
         String insertInquirerQuery = "INSERT INTO INQUIRER (firstname, lastname, phonenumber) VALUES (?, ?, ?)";
@@ -128,6 +130,7 @@ public class Inquirer extends Person implements InquirerQuerySearchInterface {
         }
     }
     
+    // Implementation of searchForInquirer method
     @Override
     public String searchForInquirer(Connection connection, String searchTerm) throws SQLException {
         String searchQuery = "SELECT * FROM INQUIRER WHERE LOWER(firstname) LIKE ? OR LOWER(lastname) LIKE ?";
@@ -151,5 +154,4 @@ public class Inquirer extends Person implements InquirerQuerySearchInterface {
             return searchResults.toString();
         }
     }
-    
 }

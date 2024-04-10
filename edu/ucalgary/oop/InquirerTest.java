@@ -3,55 +3,58 @@ package edu.ucalgary.oop;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class InquirerTest{
+public class InquirerTest {
 
-    private String expectedFirstName = "Joseph";
-    private String expectedLastName = "Bouillon";
-    private String expectedPhoneNumber = "+1-123-456-7890";
+    // Test data
+    private String expectedFirstName = "Maus";
+    private String expectedLastName = "Fischer";
+    private String expectedPhoneNumber = "+1-321-789-5444";
     private String expectedMessage = "looking for my family members";
+
+    // Creating an Inquirer object for testing
     private Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
 
+    // Test object creation
     @Test
     public void testObjectCreation() {
         assertNotNull(inquirer);
     }
 
+    // Test getFirstName method
     @Test
     public void testGetFirstName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
         assertEquals(expectedFirstName, inquirer.getFirstName());
     }
 
+    // Test getLastName method
     @Test
     public void testGetLastName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
         assertEquals(expectedLastName, inquirer.getLastName());
     }
 
+    // Test setFirstName method
     @Test
     public void testSetFirstName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        inquirer.setFirstName("John");
-        assertEquals("John", inquirer.getFirstName());
+        inquirer.setFirstName("Adam");
+        assertEquals("Adam", inquirer.getFirstName());
     }
 
+    // Test setLastName method
     @Test
     public void testSetLastName() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
-        inquirer.setLastName("Smith");
-        assertEquals("Smith", inquirer.getLastName());
+        inquirer.setLastName("Klein");
+        assertEquals("Klein", inquirer.getLastName());
     }
 
+    // Test getServicesPhoneNum method
     @Test
     public void testGetServicesPhoneNum() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
         assertEquals(expectedPhoneNumber, inquirer.getServicesPhoneNum());
     }
 
+    // Test getInfo method
     @Test
     public void testGetInfo() {
-        Inquirer inquirer = new Inquirer(expectedFirstName, expectedLastName, expectedPhoneNumber, expectedMessage);
         assertEquals(expectedMessage, inquirer.getInfo());
     }
-
 }

@@ -3,14 +3,11 @@ package edu.ucalgary.oop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
 
 public class DisasterVictim extends Person implements DisasterVictimInfoInterface {
-    private String dateOfBirth;
-    private int age;
-    private String comments;
-    private int ASSIGNED_SOCIAL_ID;
+    // Instance variables
     private ArrayList<MedicalRecord> medicalRecords;
     private ArrayList<FamilyRelation> familyConnections;
     private String ENTRY_DATE;
@@ -18,23 +15,35 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
     private String supply;
     private String gender;
     private ArrayList<DisasterVictim> victims;
+    private String dateOfBirth;
+    private int age;
+    private String comments;
+    private int ASSIGNED_SOCIAL_ID;
+
+    // Scanner object for user input
+    private static final Scanner SCANNER = new Scanner(System.in);
+
+    // Enum for diet types
     public enum Diet {
         AVML, DBML, GFML, KSML, LSML, MOML, PFML, VGML, VJML
     }
 
+    // Constructors
+    // Constructor with age parameter
     public DisasterVictim(String firstName, String ENTRY_DATE, int age) {
         super(firstName, "");
         if (age < 0) {
-            throw new IllegalArgumentException("Age cannot be negative");
+            throw new IllegalArgumentException("Age cannot be a negative value.");
         }
         this.age = age;
         this.ENTRY_DATE = ENTRY_DATE;
         this.medicalRecords = new ArrayList<>();
         this.familyConnections = new ArrayList<>();
-        this.personalBelongings = new ArrayList<>();;
+        this.personalBelongings = new ArrayList<>();
         this.victims = new ArrayList<>();
     }
 
+    // Constructor with date of birth parameter
     public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) {
         super(firstName, "");
         this.dateOfBirth = dateOfBirth;
@@ -45,46 +54,58 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         this.victims = new ArrayList<>();
     }
 
+    // Getters and setters
+    // Getter for date of birth
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
+    // Getter for comments
     public String getComments() {
         return comments;
     }
 
+    // Getter for medical records
     public MedicalRecord[] getMedicalRecords() {
         return medicalRecords.toArray(new MedicalRecord[0]);
     }
 
+    // Getter for entry date
     public String getEntryDate() {
         return ENTRY_DATE;
     }
 
+    // Getter for assigned social ID
     public int getAssignedSocialID() {
         return ASSIGNED_SOCIAL_ID;
     }
 
+    // Getter for personal belongings
     public ArrayList<Supply> getPersonalBelongings() {
         return personalBelongings;
     }
 
+    // Getter for family connections
     public ArrayList<FamilyRelation> getFamilyConnections() {
         return familyConnections;
     }
 
+    // Getter for supply
     public String getSupply() {
         return supply;
     }
 
+    // Getter for age
     public String getAge() {
         return Integer.toString(age);
     }
 
+    // Getter for gender
     public String getGender() {
         return gender;
     }
 
+    // Setter for age
     public void setAge(int age) {
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative");
@@ -92,34 +113,42 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         this.age = age;
     }
 
+    // Setter for entry date
     public void setEntryDate(String entryDate) {
         this.ENTRY_DATE = entryDate;
     }
 
+    // Setter for date of birth
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
+    // Setter for comments
     public void setComments(String comments) {
         this.comments = comments;
     }
 
+    // Setter for medical records
     public void setMedicalRecords(ArrayList<MedicalRecord> medicalRecords) {
         this.medicalRecords = medicalRecords;
     }
 
+    // Setter for personal belongings
     public void setPersonalBelongings(ArrayList<Supply> personalBelongings) {
         this.personalBelongings = personalBelongings;
     }
 
+    // Setter for family connections
     public void setFamilyConnections(ArrayList<FamilyRelation> familyConnections) {
         this.familyConnections = familyConnections;
     }
 
+    // Setter for supply
     public void setSupply(String supply) {
         this.supply = supply;
     }
 
+    // Setter for gender
     public void setGender(String gender) {
         try {
             boolean valid = false;
@@ -142,26 +171,33 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         }
     }
 
+    // Other methods
+    // Method to remove personal belonging
     public void removePersonalBelonging(Supply supply) {
         personalBelongings.remove(supply);
     }
 
+    // Method to add personal belonging
     public void addPersonalBelonging(Supply supply) {
         personalBelongings.add(supply);
     }
 
+    // Method to add family connection
     public void addFamilyConnection(FamilyRelation familyConnection) {
         familyConnections.add(familyConnection);
     }
 
+    // Method to remove family connection
     public void removeFamilyConnection(FamilyRelation familyConnection) {
         familyConnections.remove(familyConnection);
     }
 
+    // Method to add medical record
     public void addMedicalRecord(MedicalRecord medicalRecord) {
         medicalRecords.add(medicalRecord);
     }
 
+    // Method to decrease supply quantity
     public void decreaseSupplyQuantity(Supply supply) {
         for (Supply originalSupply : personalBelongings) {
             if (originalSupply.getType().equals(supply.getType())) {
@@ -172,6 +208,7 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         }
     }
 
+    // Method to apply diet restriction
     public void dietRestriction(Diet victimDiet) {
         switch (victimDiet) {
             case AVML:
@@ -207,7 +244,8 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
                 break;
         }
     }
-
+    // Overridden methods from interfaces
+    // Method to start the Disaster Victim Information System
     @Override
     public void start() {
         System.out.println("Welcome to the Disaster Victim Information System");
@@ -219,8 +257,8 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
             System.out.println("3. Exit");
 
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = SCANNER.nextInt();
+            SCANNER.nextLine();
 
             switch (choice) {
                 case 1:
@@ -239,6 +277,7 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         }
     }
 
+    // Method to get victims
     @Override
     public List<DisasterVictim> getVictims() {
         List<DisasterVictim> victims = new ArrayList<>();
@@ -250,49 +289,53 @@ public class DisasterVictim extends Person implements DisasterVictimInfoInterfac
         return victims;
     }
 
+    // Method to add a victim
     @Override
     public void addVictim(DisasterVictim victim) {
         victims.add(victim);
     }
 
+    // Method to close the scanner
     @Override
     public void closeScanner() {
-        scanner.close();
+        SCANNER.close();
     }
 
+    // Method to enter a new disaster victim
     @Override
-public void enterNewDisasterVictim() {
-    System.out.println("\nEnter details for the new Disaster Victim:");
+    public void enterNewDisasterVictim() {
+        System.out.println("\nEnter relevant details for the new Disaster Victim:");
 
-    System.out.print("First Name: ");
-    String firstName = scanner.nextLine();
+        System.out.print("First Name: ");
+        String firstName = SCANNER.nextLine();
 
-    System.out.print("Entry Date (YYYY-MM-DD): ");
-    String entryDate = scanner.nextLine();
+        System.out.print("Entry Date (YYYY-MM-DD): ");
+        String entryDate = SCANNER.nextLine();
 
-    DisasterVictim victim;
+        DisasterVictim victim;
 
-    System.out.print("Do you want to enter Date of Birth (Y/N): ");
-    String choice = scanner.nextLine();
-    if (choice.equalsIgnoreCase("Y")) {
-        System.out.print("Date of Birth (YYYY-MM-DD): ");
-        String dateOfBirth = scanner.nextLine();
-        victim = new DisasterVictim(firstName, entryDate, dateOfBirth);
-    } else {
-        victim = new DisasterVictim(firstName, entryDate, 0);
+        System.out.print("Would you like to enter Date of Birth (Y/N): ");
+        String choice = SCANNER.nextLine();
+        if (choice.equalsIgnoreCase("Y")) {
+            System.out.print("Date of Birth (YYYY-MM-DD): ");
+            String dateOfBirth = SCANNER.nextLine();
+            victim = new DisasterVictim(firstName, entryDate, dateOfBirth);
+        } else {
+            victim = new DisasterVictim(firstName, entryDate, 0);
+        }
+
+        System.out.print("Last Name: ");
+        victim.setLastName(SCANNER.nextLine());
+
+        System.out.print("Gender: ");
+        victim.setGender(SCANNER.nextLine());
+
+        System.out.print("Comments: ");
+        victim.setComments(SCANNER.nextLine());
+
+        addVictim(victim);
+        System.out.println("Disaster Victim information has been entered successfully!");
     }
-
-    System.out.print("Last Name: ");
-    victim.setLastName(scanner.nextLine());
-
-    System.out.print("Gender: ");
-    victim.setGender(scanner.nextLine());
-
-    System.out.print("Comments: ");
-    victim.setComments(scanner.nextLine());
-
-    addVictim(victim);
-    System.out.println("Disaster Victim information entered successfully.");
 }
 
-}
+   

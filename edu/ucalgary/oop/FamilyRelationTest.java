@@ -18,75 +18,96 @@ public class FamilyRelationTest {
  
     @Before
     public void setup() {
-        personOne = new DisasterVictim("John", "2024-01-19", 30);
-        personTwo = new DisasterVictim("Jane", "2024-02-20", 25);
+        // Arrange
+        personOne = new DisasterVictim("Angelina", "2024-06-23", 33);
+        personTwo = new DisasterVictim("Katy", "2024-03-12", 28);
         relationshipTo = "Sibling";
         testFamilyRelationObject = new FamilyRelation(personOne, relationshipTo, personTwo);
     }
  
     @Test
     public void testObjectCreation() {
-        assertNotNull(testFamilyRelationObject);
+        // Act & Assert
+        assertNotNull("FamilyRelation object should not be null", testFamilyRelationObject);
     }
    
     @Test
     public void testSetAndGetPersonOne() {
-        DisasterVictim newPersonOne = new DisasterVictim("New Person", "2024-03-21", 35); //arrange
-        testFamilyRelationObject.setPersonOne(newPersonOne); //act
-        assertEquals("setPersonOne should update personOne", newPersonOne, testFamilyRelationObject.getPersonOne());//assert
+        // Arrange
+        DisasterVictim newPersonOne = new DisasterVictim("New Person", "2024-03-21", 35);
+        
+        // Act
+        testFamilyRelationObject.setPersonOne(newPersonOne);
+        
+        // Assert
+        assertEquals("setPersonOne is expected to update personOne", newPersonOne, testFamilyRelationObject.getPersonOne());
     }
  
     @Test
     public void testSetAndGetPersonTwo() {
-        DisasterVictim newPersonTwo = new DisasterVictim("Another Person", "2024-04-22", 40); //arrange
-        testFamilyRelationObject.setPersonTwo(newPersonTwo); //act
-        assertEquals("setPersonTwo should update personTwo", newPersonTwo, testFamilyRelationObject.getPersonTwo()); //assert
+        // Arrange
+        DisasterVictim newPersonTwo = new DisasterVictim("Another Person", "2024-04-22", 42);
+        
+        // Act
+        testFamilyRelationObject.setPersonTwo(newPersonTwo);
+        
+        // Assert
+        assertEquals("setPersonTwo is expected to update personTwo", newPersonTwo, testFamilyRelationObject.getPersonTwo());
     }
  
     @Test
     public void testSetAndGetRelationshipTo() {
-        String newRelationship = "Parent"; //arrange
-        testFamilyRelationObject.setRelationshipTo(newRelationship); //act
-        assertEquals("setRelationshipTo should update the relationship", newRelationship, testFamilyRelationObject.getRelationshipTo()); //assert
+        // Arrange
+        String newRelationship = "Parent";
+        
+        // Act
+        testFamilyRelationObject.setRelationshipTo(newRelationship);
+        
+        // Assert
+        assertEquals("setRelationshipTo is expected to update relationship", newRelationship, testFamilyRelationObject.getRelationshipTo());
     }
  
     @Test
     public void testDuplicationCheck() {
-        DisasterVictim personThree = new DisasterVictim("Jane", "2024-02-20", 25); // Same as personTwo, arrange
-       
-        //act and assert:
-        assertTrue("testDuplicationCheck should return true if both persons are the same",
-                    testFamilyRelationObject.duplicationCheck(personOne, personTwo));
-        assertFalse("testDuplicationCheck should return false if both persons are different",
-                    testFamilyRelationObject.duplicationCheck(personOne, personThree));
+        // Arrange
+        DisasterVictim personThree = new DisasterVictim("Katy", "2024-03-12", 28); // Same as personTwo
+        
+        // Act & Assert
+        assertTrue("testDuplicationCheck should return true if both persons are the same", testFamilyRelationObject.duplicationCheck(personOne, personTwo));
+        assertFalse("testDuplicationCheck should return false if both persons are different", testFamilyRelationObject.duplicationCheck(personOne, personThree));
     }
 
     @Test
     public void testDeleteRelationship() {
+        // Act
         testFamilyRelationObject.deleteRelationship();
-        assertNull(testFamilyRelationObject.getPersonOne());
-        assertNull(testFamilyRelationObject.getPersonTwo());
-        assertNull(testFamilyRelationObject.getRelationshipTo());
+        
+        // Assert
+        assertNull("PersonOne should be null", testFamilyRelationObject.getPersonOne());
+        assertNull("PersonTwo should be null", testFamilyRelationObject.getPersonTwo());
+        assertNull("RelationshipTo should be null", testFamilyRelationObject.getRelationshipTo());
     }
 
     @Test
     public void testCheckExistingRelationship() {
-        assertTrue(testFamilyRelationObject.checkExistingRelationship());
+        // Act & Assert
+        assertTrue("checkExistingRelationship should return true", testFamilyRelationObject.checkExistingRelationship());
     }
 
     @Test
-    // tests that if A and B are related and B and C are related, A and C are also related
     public void testTransitiveRelation() {
+        // Arrange
         DisasterVictim personThree = new DisasterVictim("Jack", "2024-03-21", 35);
         String relationshipAB = "Parent";
         String relationshipBC = "Child";
         FamilyRelation relationAB = new FamilyRelation(personOne, relationshipAB, personTwo);
         FamilyRelation relationBC = new FamilyRelation(personTwo, relationshipBC, personThree);
+        
+        // Act
         boolean isRelatedAC = relationAB.checkExistingRelationship() && relationBC.checkExistingRelationship();
-        System.out.println("Is A related to B: " + relationAB.checkExistingRelationship());
-        System.out.println("Is B related to C: " + relationBC.checkExistingRelationship());
-        assertTrue(isRelatedAC);
+        
+        // Assert
+        assertTrue("A and B are related, and B and C are related, hence A and C should also be related", isRelatedAC);
     }
-
-
 }
+
